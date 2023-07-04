@@ -1,5 +1,7 @@
 from discord.ext import commands
 from discord.commands import Option
+from utils.funshiUtil import base_embed
+
 import discord
 
 
@@ -13,6 +15,14 @@ class Command(commands.Cog):
     async def on_ready(self):
         print("[ COG ] Command is set")
     
+
+    @commands.slash_command(name="about")
+    async def about(self, inter:discord.Interaction):
+        dev = self.bot.get_user(1039780426564239431)
+        description = f"Author: {dev.mention}"
+        e = base_embed("About this bot", description)
+        e.add_field(name="Source", value=f"[Github]({})")
+
 
     
     @commands.slash_command(name="avatar")
